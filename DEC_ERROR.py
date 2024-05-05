@@ -1,4 +1,6 @@
-# Decode By RoR - Team
+
+يززبزببزبزبز
+نينيزيزبزرزرزر# Decode By RoR - Team
 from os import path
 from urllib.request import urlopen
 import os,base64,zlib,pip,urllib,platform,math,shutil,random,uuid,string,hashlib,json,sys
