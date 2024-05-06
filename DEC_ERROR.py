@@ -8,12 +8,12 @@ class LockedTool:
         self.passwords.append(password)
 
     def unlock(self):
-        entered_password = input("أدخل كلمة المرور: ")
+        entered_password = input("آدخہل كہلمہهہ مہرؤر: ")
         if entered_password in self.passwords:
-            print("تم فتح الأداة بنجاح!")
+            print("تہمہ فہتہحہ آدآتہ!")
             self.is_locked = False
         else:
-            print("كلمة المرور غير صحيحة.")
+            print("كہلمہهہ مہرؤر غہيہر صہحہيہحہ.")
             self.lock()
 
     def lock(self):
