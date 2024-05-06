@@ -6,7 +6,7 @@ class LockedTool:
 
     def add_password(self, password):
         self.passwords.append(password)
-
+AKH_T='\x1b[92m
     def unlock(self):
         entered_password = input("ادخل كلمه مرور: ")
         if entered_password in self.passwords:
