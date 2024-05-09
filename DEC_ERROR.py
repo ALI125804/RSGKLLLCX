@@ -27,7 +27,7 @@ class LockedTool:
 # تجربة الأداة المقفلة
 tool = LockedTool()
 tool.add_password("@AHMEDABBOD")#مشتراك اسبوع 2024/5/6
-tool.add_password("password2")
+tool.add_password("@br_1e")
 tool.add_password("password2")
 tool.add_password("password2")
 tool.add_password("password2")
