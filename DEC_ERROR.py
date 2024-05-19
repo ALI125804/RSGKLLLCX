@@ -38,7 +38,7 @@ G26 = '\x1b[1;92m\x1b[38;5;50m'# سمائي مميز 2
 
 def LONE():
   uuid = str(os.geteuid()) + str(os.getlogin())
-  id = "-".join(uuid)
+  id = "".join(uuid)
   print("\033[2;36m; ID : "+id)
   try:
     httpCaht = requests.get("https://github.com/ALI125804/RSGKLLLCX/blob/main/Approval.txt").text
