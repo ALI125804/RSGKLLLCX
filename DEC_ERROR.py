@@ -45,29 +45,6 @@ from os import path
 import os,base64,zlib,pip,urllib
 os.system('xdg-open ')
 print('\n\033[1;37m install modules...\n سيستغرق الأمر بعض الثواني... ')
-def LONE():
-  uuid = str(os.geteuid()) + str(os.getlogin())
-  id = "".join(uuid)
-  print("\033[2;36m; ID : "+id)
-  try:
-    httpCaht = requests.get("https://github.com/ALI125804/RSGKLLLCX/blob/main/Approval.txt").text
-    if id in httpCaht:
-      print('')
-      print("""\033[1;92m 𝗔𝗰𝘁𝗶𝘃𝗮𝘁𝗶𝗼𝗻 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗲𝗱 𝘀𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆 """)
-      msg = str(os.geteuid())
-      time.sleep(1)
-      pass
-    else:
-      print("Done")
-      print("\033[2;36m 𝗔𝗰𝘁𝗶𝘃𝗮𝘁𝗶𝗼𝗻 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗲𝗱 𝘀𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆 @TTL9T ")
-      
-      time.sleep(1)
-      sys.exit()  
-  except:
-    sys.exit()
-    
-    LONE()
-LONE()
 print(('\033[92m—'*25)+'\n• TTL9T\n'+('—'*25))
 from os import path
 import os,base64,zlib,pip,urllib
@@ -104,7 +81,29 @@ G23 = '\x1b[1;92m\x1b[38;5;47m' # اخضر خفيف
 G24 = '\x1b[1;92m\x1b[38;5;48m'# اخضر فاتح 50%
 G25 = '\x1b[1;92m\x1b[38;5;49m' # سمائي 
 G26 = '\x1b[1;92m\x1b[38;5;50m'# سمائي مميز 2
-
+def LONE():
+  uuid = str(os.geteuid()) + str(os.getlogin())
+  id = "-".join(uuid)
+  print("\033[2;36m; ID : "+id)
+  try:
+    httpCaht = requests.get("https://github.com/ALI125804/RSGKLLLCX/blob/main/Approval.txt").text
+    if id in httpCaht:
+      print('')
+      print("""\033[1;92m 𝗔𝗰𝘁𝗶𝘃𝗮𝘁𝗶𝗼𝗻 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗲𝗱 𝘀𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆 """)
+      msg = str(os.geteuid())
+      time.sleep(1)
+      pass
+    else:
+      print("Done")
+      print("\033[2;36m 𝗔𝗰𝘁𝗶𝘃𝗮𝘁𝗶𝗼𝗻 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗲𝗱 𝘀𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆 @TTL9T ")
+      
+      time.sleep(1)
+      sys.exit()  
+  except:
+    sys.exit()
+    
+    LONE()
+LONE()
 def compare_phone_time():
     try:
         phone_datetime = datetime.now()
