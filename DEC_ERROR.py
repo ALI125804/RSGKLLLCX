@@ -12,7 +12,7 @@ def play_audio(url):
         file.write(requests.get(url).content)
     os.system("play-audio /data/data/com.termux/files/home/music.mp3")
     os.remove("/data/data/com.termux/files/home/music.mp3")
-audio_url = "https://raw.githubusercontent.com/ALI125804/RSGKLLLCX//main/4_5931317262744032557.mp3"
+audio_url = "https://raw.githubusercontent.com/ALI125804/RSGKLLLCX//main/1_5069260435300025852.mp3"
 try:os.system("pkg install play-audio -y")
 except:pass
 
