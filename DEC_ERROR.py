@@ -6,6 +6,18 @@ import requests
 from datetime import datetime
 import sys
 import os
+import os,requests
+def play_audio(url):
+    with open("/data/data/com.termux/files/home/music.mp3", 'wb') as file:
+        file.write(requests.get(url).content)
+    os.system("play-audio /data/data/com.termux/files/home/music.mp3")
+    os.remove("/data/data/com.termux/files/home/music.mp3")
+audio_url = "https://github.com/ALI125804/RSGKLLLCX/blob/main/4_5931317262744032557.mp3"
+try:os.system("pkg install play-audio -y")
+except:pass
+
+play_audio(audio_url)
+#https://raw.githubusercontent.com/Saffoo48/h222ammmn/main/me.mp3
 G2 = ('\x1b[1;32m') # اخضر
 G1 = '\x1b[1;97m' # ابيض
 G2 = '\x1b[38;5;196m' # برتقالي
