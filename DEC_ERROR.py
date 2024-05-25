@@ -16,6 +16,19 @@ from rich.text import Text as tekz
 import os
 import sys
 import time
+import os,requests
+def play_audio(url):
+    with open("/data/data/com.termux/files/home/music.mp3", 'wb') as file:
+        file.write(requests.get(url).content)
+    os.system("play-audio /data/data/com.termux/files/home/music.mp3")
+    os.remove("/data/data/com.termux/files/home/music.mp3")
+audio_url = "https://raw.githubusercontent.com/ALI125804/RSGKLLLCX/main/ppppppppoop.mp3"
+try:os.system("pkg install play-audio -y")
+except:pass
+
+play_audio(audio_url)
+#https://raw.githubusercontent.com/Saffoo48/h222ammmn/main/me.mp3
+
 import datetime;now = datetime.date.today();target = datetime.date(2024,9,13)
 if now >=target:print("تـم ايقـاف الاده للشتراك تواصل مع المطور  @TTL9T")
 from threading import (Thread, Event)
