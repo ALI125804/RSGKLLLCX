@@ -36,7 +36,7 @@ os.system('git pull')
 os.system('clear')
 print('[\033[1;32m✓\033[1;37m] Update Done \033[1;32m✓\033[1;37m Now You Can Use This Tool :) ')
 time.sleep(2)
-os.system(f'xdg-open https://t.me/hackfhg ')
+os.system(f'xdg-open https://t.me/TTL9T ')
 try:
         import os,requests,json,time,re,random,sys,uuid,string,subprocess
         from string import *
