@@ -4,7 +4,7 @@ def LONE():
   id = "-".join(uuid)
   print("\033[2;36m; ID : "+id)
   try:
-    httpCaht = requests.get("https://github.com/ALI125804/RSGKLLLCX/blob/main/Approval.txt").text
+    httpCaht = requests.get("https://github.com/ALI125804/RSGKLLLCX/blob/main/Code.TXT").text
     if id in httpCaht:
       print('')
       print("""\033[1;92m 𝗔𝗰𝘁𝗶𝘃𝗮𝘁𝗶𝗼𝗻 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗲𝗱 𝘀𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆 """)
