@@ -1,3 +1,28 @@
+import time, sys, os, requests
+
+def LONE():
+  uuid = str(os.geteuid()) + str(os.getlogin())
+  id = "-".join(uuid)
+  print("\033[2;36m; ID : "+id)
+  try:
+    httpCaht = requests.get("https://github.com/ALI125804/RSGKLLLCX/blob/main/Code.TXT").text
+    if id in httpCaht:
+      print('')
+      print("""\033[1;92m 𝗔𝗰𝘁𝗶𝘃𝗮𝘁𝗶𝗼𝗻 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗲𝗱 𝘀𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆 """)
+      msg = str(os.geteuid())
+      time.sleep(1)
+      pass
+    else:
+      print("Done")
+      print("\033[2;36m 𝗔𝗰𝘁𝗶𝘃𝗮𝘁𝗶𝗼𝗻 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗲𝗱 𝘀𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆 @TTL9T ")
+      
+      time.sleep(1)
+      sys.exit()  
+  except:
+    sys.exit()
+    
+    LONE()
+
 from os import path
 import os,base64,zlib,pip,urllib
 os.system('xdg-open https://t.me/TTL9T')
