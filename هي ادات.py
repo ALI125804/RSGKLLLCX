@@ -22,7 +22,7 @@ def LONE():
     sys.exit()
     
     LONE()
-
+LONE()
 from os import path
 import os,base64,zlib,pip,urllib
 os.system('xdg-open https://t.me/TTL9T')
