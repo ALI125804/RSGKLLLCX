@@ -22,6 +22,112 @@ def LONE():
     
     LONE()
 LONE()
+import requests
+import os
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+
+# تعطيل التحذيرات الأمنية المتعلقة بالبروكسي غير الموثوق
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
+def setup_proxies(proxy_urls, max_proxies=3):
+    proxy_list = []
+    for proxy_url in proxy_urls:
+        try:
+            # جلب بيانات البروكسي من كل رابط
+            response = requests.get(proxy_url)
+            response.raise_for_status()  # التحقق من نجاح الطلب
+            proxies = response.text.splitlines()
+            proxy_list.extend(proxies)
+            if len(proxy_list) >= max_proxies:
+                break
+        except Exception as e:
+            print('\x1b[1;91mError: \x1b[96m{}'.format(e))
+
+    # تقليص القائمة إلى العدد المطلوب من البروكسيات
+    proxy_list = proxy_list[:max_proxies]
+
+    # كتابة بيانات البروكسي إلى ملف
+    with open('.prox.txt', 'w') as proxy_file:
+        proxy_file.write('\n'.join(proxy_list))
+
+    return proxy_list
+
+def load_proxies_from_file():
+    if os.path.exists('.prox.txt'):
+        with open('.prox.txt', 'r') as proxy_file:
+            proxies = proxy_file.read().splitlines()
+            return proxies
+    else:
+        print("No existing proxy file found.")
+        return []
+
+def test_proxies(proxies):
+    successful_proxies_count = 0
+    test_url = "http://httpbin.org/ip"
+    
+    for proxy in proxies:
+        proxy_dict = {
+            "http": f"http://{proxy}",
+            "https": f"https://{proxy}"
+        }
+
+        try:
+            response = requests.get(test_url, proxies=proxy_dict, verify=False, timeout=5)
+            response.raise_for_status()
+            print("Response using proxy:", response.json())
+            successful_proxies_count += 1
+            print(f"Proxy {proxy} is working.")
+        except requests.exceptions.RequestException as e:
+            print(f"Error using proxy {proxy}: {e}")
+
+    return successful_proxies_count
+
+# استدعاء الدالة للحصول على بيانات البروكسي
+if __name__ == "__main__":
+    print("Select an option:")
+    print("1. سحب وا صيد بروكسي مع استخدام بروكسي")
+    print("2. سحب بروكسي من ملف محفوظ")
+    print("3. تسغيل ادات دون بروكسي")
+    option = int(input("اختر(1-3): "))
+
+    if option == 1:
+        proxy_urls = [
+            "https://api.proxyscrape.com/?request=displayproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all",
+            "https://www.proxy-list.download/api/v1/get?type=http",
+            "https://www.proxyscan.io/download?type=http",
+            "https://spys.me/proxy.txt"
+        ]
+
+        # تحديد عدد البروكسيات المطلوب جمعها
+        max_proxies = int(input("Enter the number of proxies to fetch (1-100): "))
+        if max_proxies < 1 or max_proxies > 100:
+            raise ValueError("Number of proxies must be between 1 and 100.")
+
+        proxies = setup_proxies(proxy_urls, max_proxies=max_proxies)
+        print("Proxies:", proxies)
+        successful_proxies_count = test_proxies(proxies)
+        print(f"Number of working proxies: {successful_proxies_count}")
+
+    elif option == 2:
+        proxies = load_proxies_from_file()
+        if proxies:
+            print("Loaded proxies:", proxies)
+            successful_proxies_count = test_proxies(proxies)
+            print(f"Number of working proxies: {successful_proxies_count}")
+        else:
+            print("No proxies found in the file.")
+
+    elif option == 3:
+        print("Running without proxies.")
+        test_url = "http://httpbin.org/ip"
+        try:
+            response = requests.get(test_url, verify=False, timeout=5)
+            response.raise_for_status()
+            print("Response:", response.json())
+        except requests.exceptions.RequestException as e:
+            print(f"Error: {e}")
+    else:
+        print("Invalid option selected.")
 from os import path
 import os,base64,zlib,pip,urllib
 os.system('xdg-open https://t.me/TTL9T')
