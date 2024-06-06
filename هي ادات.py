@@ -22,112 +22,6 @@ def LONE():
     
     LONE()
 LONE()
-import requests
-import os
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
-
-# تعطيل التحذيرات الأمنية المتعلقة بالبروكسي غير الموثوق
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-
-def setup_proxies(proxy_urls, max_proxies=3):
-    proxy_list = []
-    for proxy_url in proxy_urls:
-        try:
-            # جلب بيانات البروكسي من كل رابط
-            response = requests.get(proxy_url)
-            response.raise_for_status()  # التحقق من نجاح الطلب
-            proxies = response.text.splitlines()
-            proxy_list.extend(proxies)
-            if len(proxy_list) >= max_proxies:
-                break
-        except Exception as e:
-            print('\x1b[1;91mError: \x1b[96m{}'.format(e))
-
-    # تقليص القائمة إلى العدد المطلوب من البروكسيات
-    proxy_list = proxy_list[:max_proxies]
-
-    # كتابة بيانات البروكسي إلى ملف
-    with open('.prox.txt', 'w') as proxy_file:
-        proxy_file.write('\n'.join(proxy_list))
-
-    return proxy_list
-
-def load_proxies_from_file():
-    if os.path.exists('.prox.txt'):
-        with open('.prox.txt', 'r') as proxy_file:
-            proxies = proxy_file.read().splitlines()
-            return proxies
-    else:
-        print("No existing proxy file found.")
-        return []
-
-def test_proxies(proxies):
-    successful_proxies_count = 0
-    test_url = "http://httpbin.org/ip"
-    
-    for proxy in proxies:
-        proxy_dict = {
-            "http": f"http://{proxy}",
-            "https": f"https://{proxy}"
-        }
-
-        try:
-            response = requests.get(test_url, proxies=proxy_dict, verify=False, timeout=5)
-            response.raise_for_status()
-            print("Response using proxy:", response.json())
-            successful_proxies_count += 1
-            print(f"Proxy {proxy} is working.")
-        except requests.exceptions.RequestException as e:
-            print(f"Error using proxy {proxy}: {e}")
-
-    return successful_proxies_count
-
-# استدعاء الدالة للحصول على بيانات البروكسي
-if __name__ == "__main__":
-    print("Select an option:")
-    print("1. سحب وا صيد بروكسي مع استخدام بروكسي")
-    print("2. سحب بروكسي من ملف محفوظ")
-    print("3. تسغيل ادات دون بروكسي")
-    option = int(input("اختر(1-3): "))
-
-    if option == 1:
-        proxy_urls = [
-            "https://api.proxyscrape.com/?request=displayproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all",
-            "https://www.proxy-list.download/api/v1/get?type=http",
-            "https://www.proxyscan.io/download?type=http",
-            "https://spys.me/proxy.txt"
-        ]
-
-        # تحديد عدد البروكسيات المطلوب جمعها
-        max_proxies = int(input("Enter the number of proxies to fetch (1-100): "))
-        if max_proxies < 1 or max_proxies > 100:
-            raise ValueError("Number of proxies must be between 1 and 100.")
-
-        proxies = setup_proxies(proxy_urls, max_proxies=max_proxies)
-        print("Proxies:", proxies)
-        successful_proxies_count = test_proxies(proxies)
-        print(f"Number of working proxies: {successful_proxies_count}")
-
-    elif option == 2:
-        proxies = load_proxies_from_file()
-        if proxies:
-            print("Loaded proxies:", proxies)
-            successful_proxies_count = test_proxies(proxies)
-            print(f"Number of working proxies: {successful_proxies_count}")
-        else:
-            print("No proxies found in the file.")
-
-    elif option == 3:
-        print("Running without proxies.")
-        test_url = "http://httpbin.org/ip"
-        try:
-            response = requests.get(test_url, verify=False, timeout=5)
-            response.raise_for_status()
-            print("Response:", response.json())
-        except requests.exceptions.RequestException as e:
-            print(f"Error: {e}")
-    else:
-        print("Invalid option selected.")
 from os import path
 import os,base64,zlib,pip,urllib
 os.system('xdg-open https://t.me/TTL9T')
@@ -1735,7 +1629,7 @@ def menu():
                                 mthd=input('\033[1;96m𝐂𝐇𝐎𝐎𝐒𝐄  \033[1;94m: ')
                                 clear()
                                 plist = []
-                                print('\x1b[1;92m [01] \x1b[1;31m𝐓𝐡𝐞𝐫𝐞 𝐚𝐫𝐞 𝐛𝐢𝐫𝐭𝐡 𝐩𝐚𝐬𝐬𝐰𝐨𝐫𝐝𝐬 𝐡𝐞𝐫𝐞 \n\x1b[1;92m [02] \x1b[1;33m𝐇𝐞𝐫𝐞 𝐚𝐫𝐞 𝐦𝐲 𝐨𝐩𝐭𝐢𝐨𝐧𝐚𝐥 𝐩𝐚𝐬𝐬𝐰𝐨𝐫𝐝𝐬  \n\x1b[1;92m [03] \x1b[1;32m𝐓𝐡𝐞𝐫𝐞 𝐚𝐫𝐞 𝐝𝐨𝐮𝐛𝐥𝐞 𝐩𝐚𝐬𝐬𝐰𝐨𝐫𝐝𝐬 𝐡𝐞𝐫𝐞 \n\x1b[1;92m [04] \x1b[1;94m𝐓𝐡𝐞𝐫𝐞 𝐚𝐫𝐞 𝐦𝐨𝐫𝐞 𝐭𝐡𝐚𝐧 𝟖𝟎 𝐩𝐚𝐬𝐬𝐰𝐨𝐫𝐝𝐬 𝐡𝐞𝐫𝐞');linex()
+                                print('\x1b[1;92m [01] \x1b[1;31m𝐓𝐡𝐞𝐫𝐞 𝐚𝐫𝐞 𝐛𝐢𝐫𝐭𝐡 𝐩𝐚𝐬𝐬𝐰𝐨𝐫𝐝𝐬 𝐡𝐞𝐫𝐞 \n\x1b[1;92m [02] \x1b[1;33m𝐇𝐞𝐫𝐞 𝐚𝐫𝐞 𝐦𝐲 𝐨𝐩𝐭𝐢𝐨𝐧𝐚𝐥 𝐩𝐚𝐬𝐬𝐰𝐨𝐫𝐝𝐬  \n\x1b[1;92m [03] \x1b[1;32m𝐓𝐡𝐞𝐫𝐞 𝐚𝐫𝐞 𝐝𝐨𝐮𝐛𝐥𝐞 𝐩𝐚𝐬𝐬𝐰𝐨𝐫𝐝𝐬 𝐡𝐞𝐫𝐞 \n\x1b[1;92m [04] \x1b[1;94m𝐓𝐡𝐞𝐫𝐞 𝐚𝐫𝐞 𝐦𝐨𝐫𝐞 𝐭𝐡𝐚𝐧 𝟖𝟎 𝐩𝐚𝐬𝐬𝐰𝐨𝐫𝐝𝐬 𝐡𝐞𝐫𝐞                     [5] باسوردات موليد فقط');linex()
                                 ppp=input('\033[1;96m𝐂𝐇𝐎𝐎𝐒𝐄  \033[1;94m: ')
                                 if ppp in ['1','01']:
                                         plist.append('first last')
@@ -1803,6 +1697,42 @@ def menu():
                                     plist.append('5544332211')
                                     plist.append('5432154321')
                                     plist.append('12341234@')
+                                elif ppp in ["5","05"]:
+                                    plist.append('19991999')
+                                    plist.append('19951995')
+                                    plist.append('19961996')
+                                    plist.append('19971997')
+                                    plist.append('19941994')
+                                    plist.append('19931993')
+                                    plist.append('20002000')
+                                    plist.append('19921992')  
+                                    plist.append('19911991')
+                                    plist.append('19981998')
+                                    plist.append('19961996')
+                                    plist.append('20012001')                                                                      
+                                    plist.append('20062006')
+                                    plist.append('20052005')
+                                    plist.append('20072007')     
+                                    plist.append('20032003')
+                                    plist.append('20022002')
+                                    plist.append('19811981')
+                                    plist.append('19821982')
+                                    plist.append('19831983')
+                                    plist.append('19841984')
+                                    plist.append('19851985')
+                                    plist.append('19861986')      
+                                    plist.append('19871987')
+                                    plist.append('19881988')
+                                    plist.append('19711971')
+                                    plist.append('19721972')     
+                                    plist.append('19731973')
+                                    plist.append('19741974')
+                                    plist.append('19751975')
+                                    plist.append('19761976')
+                                    plist.append('19771977')
+                                    plist.append('19771977')
+                                    plist.append('19781978')
+                                    plist.append('19791979')                                                                                                                                                                                                                                          
                                 else:
                                         try:
                                                 linex()
