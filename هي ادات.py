@@ -94,8 +94,7 @@ import os,base64,zlib,pip,urllib,platform,math,shutil,random,uuid,string,hashlib
 token = input('\x1b[1;32mT\x1b[1;32mO\x1b[1;32mK\x1b[1;32mE\x1b[1;32mN\x1b[1;32m :\x1b[1;34m ')
 ID = input('\x1b[1;31mI\x1b[1;31mD \x1b[1;36m   : ')
 
-token = ('6630141922:AAFP725xyrJzH0mDlKCJ88tKax_9ek4ybC4')
-ID = ('5476613333')
+
 
 print('\n\033[1;37m ادات حسن ملك تعديل فول استمتع في فترا تجريبي')
 
